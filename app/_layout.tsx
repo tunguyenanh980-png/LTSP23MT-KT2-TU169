@@ -1,24 +1,13 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { Stack } from "expo-router";
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
-
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
+export default function Layout() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <Stack screenOptions={{ headerShown: true }}>
+      <Stack.Screen name="index" options={{ title: 'Menu Chính' }} />
+      <Stack.Screen name="thongtin" options={{ title: 'Thông Tin Sinh Viên' }} />
+      <Stack.Screen name="ct1" options={{ title: 'CT1 - Tắt máy' }} />
+      <Stack.Screen name="ct2" options={{ title: 'CT2 - Cuộc gọi tới' }} />
+      <Stack.Screen name="ct3" options={{ title: 'CT3 - Chữ chạy' }} />
+    </Stack>
   );
 }
